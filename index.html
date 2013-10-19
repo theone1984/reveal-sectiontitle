@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>reveal.animate</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Thomas Endres">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/sky.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <link rel="stylesheet" href="css/print/pdf.css" type="text/css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="background">
+</div>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+        <section data-before-overview>
+            <h1>Titles for reveal.js</h1>
+
+            <h3>A plugin for integrating title sections into reveal.js animations</h3>
+
+            <p style="margin-top: 45px;">
+                <i>
+                    <small>Created by Thomas Endres</small>
+                </i>
+            </p>
+        </section>
+        <section data-title="Features">
+
+            <section class="introduction-slide">
+                <h2>The idea</h2>
+
+                <div class="animated-html" style="overflow: hidden;">
+                    <img src="img/thinker.png" style="position: absolute; left: 200px; top: 280px;"/>
+                    <img class="fragment" src="img/idea.png" style="position: absolute; left: 400px; top: 150px;"/>
+                </div>
+            </section>
+
+            <section class="example">
+                <h2>What can be done?</h2>
+
+                <ul style="margin-top: 50px;">
+                    <li>
+                        After every top-level section marked with a "data-before-overview" attribute, an overview slide is inserted
+
+                        <pre style="margin-left: 0;"><code class="medium-font html">&lt;section data-before-overview&gt;...&lt;/section&gt;</code></pre>
+                    </li>
+
+                    <li>
+                        An extra overview slide is generated before each slide that has a "data-title" attribute
+
+                        <pre style="margin-left: 0;"><code class="medium-font html">&lt;section data-title="Title"&gt;...&lt;/section&gt;</code></pre>
+                    </li>
+                    <li>The overview slides combines all titles that were specified in the "data-title" attributes</li>
+                    <li>The overview slides feature links to the respective slides</li>
+                </ul>
+            </section>
+
+        </section>
+
+        <section data-title="Technical details">
+
+            <section>
+                <h2>Getting started (1)</h2>
+
+                <ul style="margin-top: 70px; margin-bottom: 70px;">
+                    <li>Within your HTML code, load the necessary dependencies</li>
+                    <li>The following JavaScript libraries need to be loaded:</li>
+                </ul>
+
+                <pre><code class="medium-font html">&lt;script src="js/jquery.js"&gt;&lt;/script&gt;</code></pre>
+            </section>
+
+            <section>
+                <h2>Getting started (2)</h2>
+
+                <ul style="margin-top: 50px; margin-bottom: 20px;">
+                    <li>Copy the code in 'plugin/sectiontitle'</li>
+                    <li>Specify the options you need (see code below/next slide)</li>
+                    <li>Register the plugin (see code below)</li>
+                </ul>
+
+                <pre><code class="medium-font javascript">{ src: 'plugin/sectiontitle/reveal.sectiontitle.js', async: false, callback: function() {
+    var sectionTitle = Reveal.SectionTitle({
+        header: '&lt;h2&gt;Overview&lt;/h2&gt;',
+        wrapper: {
+            start: '&lt;div class="titles-parent"&gt;&lt;div class="titles"&gt;',
+            end: '&lt;/div&gt;&lt;/div&gt;'
+        },
+        sectionClass: 'overview',
+        titleClass: 'title',
+        selectedTitleClass: 'selected-title'
+    });
+    sectionTitle.createSections();
+} }</code></pre>
+            </section>
+
+            <section>
+                <h2>Options</h2>
+
+                <p>You should implement most of the options since there are no reasonable default values and they default to an empty string</p>
+                <ul style="margin-top: 50px; margin-bottom: 20px;">
+                    <li>header: HTML code for the overview section header</li>
+                    <li>wrapper.start/end: HTML code that is inserted before/after the displayed titles</li>
+                    <li>sectionClass: CSS class assigned to the overview section</li>
+                    <li>titleClass: CSS class assigned to each title</li>
+                    <li>selectedTitleClass: CSS class assigned to the currently selected title</li>
+                </ul>
+            </section>
+
+        </section>
+    </div>
+
+</div>
+
+<script src="js/jquery.1.10.2.js"></script>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        margin: 0,
+
+        //minScale: 1.0,
+        //maxScale: 1.0,
+
+        controls: false,
+        progress: false,
+        history: true,
+        center: true,
+
+        theme: 'sky', // available themes are in /css/theme
+        transition: 'cube', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() {
+                return !document.body.classList;
+            } },
+            { src: 'plugin/markdown/marked.js', condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: 'plugin/markdown/markdown.js', condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function() {
+                hljs.initHighlightingOnLoad();
+            } },
+            { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() {
+                return !!document.body.classList;
+            } },
+            { src: 'plugin/notes/notes.js', async: true, condition: function() {
+                return !!document.body.classList;
+            } },
+            { src: 'plugin/sectiontitle/reveal.sectiontitle.js', async: false, callback: function() {
+                var sectionTitle = Reveal.SectionTitle({
+                    header: '<h2>Overview</h2>',
+                    wrapper: {
+                        start: '<div class="titles-parent"><div class="titles">',
+                        end: '</div></div>'
+                    },
+                    sectionClass: 'overview',
+                    titleClass: 'title',
+                    selectedTitleClass: 'selected-title'
+                });
+                sectionTitle.createSections();
+            } }
+        ]
+    });
+</script>
+
+</body>
+</html>

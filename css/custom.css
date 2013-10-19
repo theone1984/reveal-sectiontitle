@@ -1,0 +1,82 @@
+.background {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url('../img/background.jpg');
+    opacity: 0.3;
+}
+
+.reveal .slides pre code {
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.reveal .slides section h1:first-child {
+    margin-top: 120px;
+}
+
+.reveal .slides section>h2 + * {
+
+}
+
+.reveal>.slides section {
+    font-size: 24pt;
+}
+
+.reveal>.slides section h1 {
+    font-size: 200%;
+}
+
+.reveal>.slides section h2 {
+    font-size: 150%;
+}
+
+.reveal>.slides section h3 {
+    font-size: 125%;
+}
+
+.reveal>.slides section .tiny-font {
+    font-size: 75%;
+}
+
+.reveal>.slides section .medium-font {
+    font-size: 90%;
+}
+
+.reveal>.slides section img {
+    border: 0;
+    box-shadow: none;
+
+    background: none;
+}
+
+.reveal>.slides section .titles-parent {
+    height: 520px;
+    display: table;
+}
+
+.reveal>.slides section .titles {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.reveal>.slides section .titles .title, .reveal>.slides section .titles .selected-title {
+    width: 880px;
+
+    padding: 5px 5px 5px 10px;
+    margin-top: 10px;
+
+    color: #ffffff;
+}
+
+.reveal>.slides section .titles .title {
+    background-color: #1788c8;
+}
+
+.reveal>.slides section .titles .selected-title {
+    background-color: #212d76;
+}
