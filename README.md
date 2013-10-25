@@ -2,6 +2,8 @@
 
 The plugin provides a way to automatically generate section title slides for reveal.js presentations.
 
+[View the demo!](http://theone1984.github.io/reveal-sectiontitle)
+
 ## Documentation
 
 The plugin is documented using its slideshow as a documentation.
