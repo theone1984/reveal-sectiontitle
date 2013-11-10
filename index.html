@@ -140,7 +140,7 @@
 <script src="js/jquery.1.10.2.js"></script>
 
 <script src="lib/js/head.min.js"></script>
-<script src="js/reveal.min.js"></script>
+<script src="js/reveal.js"></script>
 
 <script>
     // Full list of configuration options available here:
@@ -161,6 +161,19 @@
 
         // Optional libraries used to extend on reveal.js
         dependencies: [
+            { src: 'plugin/sectiontitle/reveal.sectiontitle.js', async: false, callback: function() {
+                var sectionTitle = Reveal.SectionTitle({
+                    header: '<h2>Overview</h2>',
+                    wrapper: {
+                        start: '<div class="titles-parent"><div class="titles">',
+                        end: '</div></div>'
+                    },
+                    sectionClass: 'overview',
+                    titleClass: 'title',
+                    selectedTitleClass: 'selected-title'
+                });
+                sectionTitle.createSections();
+            } },
             { src: 'lib/js/classList.js', condition: function() {
                 return !document.body.classList;
             } },
@@ -178,19 +191,6 @@
             } },
             { src: 'plugin/notes/notes.js', async: true, condition: function() {
                 return !!document.body.classList;
-            } },
-            { src: 'plugin/sectiontitle/reveal.sectiontitle.js', async: false, callback: function() {
-                var sectionTitle = Reveal.SectionTitle({
-                    header: '<h2>Overview</h2>',
-                    wrapper: {
-                        start: '<div class="titles-parent"><div class="titles">',
-                        end: '</div></div>'
-                    },
-                    sectionClass: 'overview',
-                    titleClass: 'title',
-                    selectedTitleClass: 'selected-title'
-                });
-                sectionTitle.createSections();
             } }
         ]
     });
